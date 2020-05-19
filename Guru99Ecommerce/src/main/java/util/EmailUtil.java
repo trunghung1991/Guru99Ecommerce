@@ -67,7 +67,7 @@ public class EmailUtil {
 			MimeBodyPart attachmentPart = new MimeBodyPart();
 			MimeBodyPart textPart = new MimeBodyPart();
 			try {
-				File f = new File("C:\\Users\\hung.nguyen\\Downloads\\TestCase-10.png");
+				File f = new File("C:\\Users\\Nam-Graphic's\\git\\Guru99Ecommerce\\Guru99Ecommerce\\resources\\test_img.png");
 				attachmentPart.attachFile(f);
 				textPart.setText("This is text");
 				multipart.addBodyPart(textPart);

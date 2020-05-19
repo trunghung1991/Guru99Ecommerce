@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 
 import base.BaseClass;
 import pageFactory.Day10Page;
+import pageFactory.Day13Page;
 import pageFactory.Day1Page;
 import pageFactory.Day2Page;
 import pageFactory.Day3Page;
@@ -21,6 +22,7 @@ import pageFactory.Day6Page;
 import pageFactory.Day7Page;
 import pageFactory.Day8Page;
 import pageFactory.Day9Page;
+import util.EmailUtil;
 
 public class Testcases extends BaseClass {
 
@@ -238,9 +240,8 @@ public class Testcases extends BaseClass {
 		}
 	}
 	
-	@Test(description = "Day 10", priority = 10)
+	@Test(description = "Day 10", priority = 10, enabled = false)
 	public void day10() throws MessagingException, InterruptedException {
-		// EmailUtil.sendMail();
 		Day10Page day10Page = new Day10Page(driver);
 		day10Page.adminLogin("user01", "guru99com");
 		day10Page.closePopup();
@@ -248,5 +249,16 @@ public class Testcases extends BaseClass {
 		day10Page.exportCSV();
 		Thread.sleep(7000);
 		day10Page.readCSV("C:\\Users\\hung.nguyen\\Downloads", "orders.csv");
+		EmailUtil.sendMail();
+	}
+	
+	@Test(description = "Day 13", priority = 13)
+	public void day13() throws InterruptedException {
+		Day13Page day13Page = new Day13Page(driver);
+		day13Page.adminLogin("user01", "guru99com");
+		day13Page.closePopup();
+		day13Page.clickMenuInvoice();
+		Thread.sleep(2000);
+		day13Page.getInvoiceDate();
 	}
 }
