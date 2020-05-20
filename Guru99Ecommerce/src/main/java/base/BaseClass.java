@@ -16,7 +16,7 @@ public class BaseClass {
 
 		ChromeOptions options = new ChromeOptions();
 		System.setProperty("webdriver.chrome.driver",
-				"C:\\Users\\Nam-Graphic's\\git\\Guru99Ecommerce\\Guru99Ecommerce\\driver\\chromedriver.exe");
+				"C:\\Users\\hung.nguyen\\git\\repository\\Guru99Ecommerce\\driver\\chromedriver.exe");
 		System.setProperty("webdriver.chrome.args", "--disable-logging");
 		System.setProperty("webdriver.chrome.silentOutput", "true");
 		options.addArguments("start-maximized");

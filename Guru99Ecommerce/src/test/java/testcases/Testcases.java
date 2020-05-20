@@ -23,6 +23,7 @@ import pageFactory.Day7Page;
 import pageFactory.Day8Page;
 import pageFactory.Day9Page;
 import util.EmailUtil;
+import util.ExcelUtil;
 
 public class Testcases extends BaseClass {
 
@@ -254,11 +255,12 @@ public class Testcases extends BaseClass {
 	
 	@Test(description = "Day 13", priority = 13)
 	public void day13() throws InterruptedException {
-		Day13Page day13Page = new Day13Page(driver);
-		day13Page.adminLogin("user01", "guru99com");
-		day13Page.closePopup();
-		day13Page.clickMenuInvoice();
-		Thread.sleep(2000);
-		day13Page.getInvoiceDate();
+//		Day13Page day13Page = new Day13Page(driver);
+//		day13Page.adminLogin("user01", "guru99com");
+//		day13Page.closePopup();
+//		day13Page.clickMenuInvoice();
+//		Thread.sleep(2000);
+//		day13Page.getInvoiceDate();
+		ExcelUtil.ReadExcel("C:\\Users\\hung.nguyen\\Desktop\\TestData.xlsx");
 	}
 }
