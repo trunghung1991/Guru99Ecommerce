@@ -7,7 +7,7 @@
         <methods>
           <include name="setupApplication"/>
           <include name="closeApplication"/>
-          <include name="day10"/>
+          <include name="day13"/>
         </methods>
       </class> <!-- testcases.Testcases -->
     </classes>

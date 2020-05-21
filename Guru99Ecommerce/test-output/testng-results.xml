@@ -11,12 +11,12 @@
       <![CDATA[====Browser Session Ended====]]>
     </line>
   </reporter-output>
-  <suite started-at="2020-05-20T18:02:17 ICT" name="Default suite" finished-at="2020-05-20T18:02:25 ICT" duration-ms="8603">
+  <suite started-at="2020-05-21T00:03:59 ICT" name="Default suite" finished-at="2020-05-21T00:04:05 ICT" duration-ms="5709">
     <groups>
     </groups>
-    <test started-at="2020-05-20T18:02:17 ICT" name="Default test" finished-at="2020-05-20T18:02:25 ICT" duration-ms="8603">
+    <test started-at="2020-05-21T00:03:59 ICT" name="Default test" finished-at="2020-05-21T00:04:05 ICT" duration-ms="5709">
       <class name="testcases.Testcases">
-        <test-method is-config="true" signature="setupApplication()[pri:0, instance:testcases.Testcases@a3d8174]" started-at="2020-05-20T18:02:17 ICT" name="setupApplication" finished-at="2020-05-20T18:02:24 ICT" duration-ms="7376" status="PASS">
+        <test-method is-config="true" signature="setupApplication()[pri:0, instance:testcases.Testcases@3527942a]" started-at="2020-05-21T00:03:59 ICT" name="setupApplication" finished-at="2020-05-21T00:04:04 ICT" duration-ms="4541" status="PASS">
           <reporter-output>
             <line>
               <![CDATA[====Browser Session Started====]]>
@@ -26,11 +26,11 @@
             </line>
           </reporter-output>
         </test-method> <!-- setupApplication -->
-        <test-method signature="day13()[pri:13, instance:testcases.Testcases@a3d8174]" started-at="2020-05-20T18:02:24 ICT" name="day13" description="Day 13" finished-at="2020-05-20T18:02:25 ICT" duration-ms="479" status="PASS">
+        <test-method signature="day13()[pri:13, instance:testcases.Testcases@3527942a]" started-at="2020-05-21T00:04:04 ICT" name="day13" description="Day 13" finished-at="2020-05-21T00:04:04 ICT" duration-ms="555" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- day13 -->
-        <test-method is-config="true" signature="closeApplication()[pri:0, instance:testcases.Testcases@a3d8174]" started-at="2020-05-20T18:02:25 ICT" name="closeApplication" finished-at="2020-05-20T18:02:25 ICT" duration-ms="716" status="PASS">
+        <test-method is-config="true" signature="closeApplication()[pri:0, instance:testcases.Testcases@3527942a]" started-at="2020-05-21T00:04:04 ICT" name="closeApplication" finished-at="2020-05-21T00:04:05 ICT" duration-ms="577" status="PASS">
           <reporter-output>
             <line>
               <![CDATA[====Browser Session Ended====]]>
