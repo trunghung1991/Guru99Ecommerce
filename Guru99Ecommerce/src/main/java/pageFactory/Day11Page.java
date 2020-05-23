@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import base.BaseClass;
 
-public class Day10Page extends BaseClass {
+public class Day11Page extends BaseClass {
 
 	@FindBy(xpath = "//input[@id='username']")
 	WebElement txtUsername;
@@ -27,13 +27,21 @@ public class Day10Page extends BaseClass {
 	WebElement mnSale;
 	@FindBy(xpath = "//span[contains(text(),'Orders')]")
 	WebElement mnOrder;
-	@FindBy(xpath = "//select[@id='sales_order_grid_export']")
-	WebElement drpExportTo;
-	@FindBy(xpath = "//button[@title='Export']")
-	WebElement btnExport;
+	@FindBy(xpath = "//select[@id='sales_order_grid_filter_status']")
+	WebElement drpStatus;
+	@FindBy(xpath = "//span[contains(text(),'Search')]")
+	WebElement btnSearch;
+	@FindBy(xpath = "//tbody/tr[1]/td/input[@name='order_ids']")
+	WebElement chkFirstOrder;
+	@FindBy(xpath = "//select[@id='sales_order_grid_massaction-select']")
+	WebElement drpActions;
+	@FindBy(xpath = "//button[@title='Submit']")
+	WebElement btnSubmit;
+	@FindBy(xpath = "//li[@class='error-msg']/ul/li/span")
+	WebElement msgPrintError;
 
 	// Constructor
-	public Day10Page(WebDriver driver) {
+	public Day11Page(WebDriver driver) {
 		this.driver = driver;
 		driver.get("http://live.demoguru99.com/index.php/backendlogin/");
 		PageFactory.initElements(driver, this);
@@ -59,13 +67,42 @@ public class Day10Page extends BaseClass {
 		action.moveToElement(mnSale).perform();
 		mnOrder.click();
 	}
-
-	// Select CSV in Export To dropdown
-	public void exportCSV() {
-		Select csv = new Select(drpExportTo);
-		csv.selectByIndex(0);
-		btnExport.click();
-	}
-
 	
+	// Select Cancelled status
+	public void selectCancelledStatus() {
+		Select select = new Select(drpStatus);
+		select.selectByValue("canceled");
+	}
+	
+	// Click Search button
+	public void clickSearch() {
+		btnSearch.click();
+	}
+	
+	// Select checkbox of first order
+	public void selectFirstOrder() {
+		chkFirstOrder.click();
+	}
+	
+	// Select Action Print invoices
+	public void selectPrintInvoices() {
+		Select select = new Select(drpActions);
+		select.selectByValue("pdfinvoices_order");
+	}
+	
+	// Click Submit button
+	public void clickSubmit() {
+		btnSubmit.click();
+	}
+	
+	// Get print invoices error message
+	public String getMsgErrPrintInvoice() {
+		return msgPrintError.getText();
+	}
+	
+	// Select Complete status
+	public void selectCompleteStatus() {
+		Select select = new Select(drpStatus);
+		select.selectByValue("complete");
+	}
 }

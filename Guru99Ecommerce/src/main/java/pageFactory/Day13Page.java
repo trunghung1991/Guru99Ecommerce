@@ -58,11 +58,11 @@ public class Day13Page extends BaseClass {
 	}
 
 	// Get value of all Invoice date
-	public void getInvoiceDate() {
-		List<String> date = new ArrayList<String>();
+	public List<String> getInvoiceDate() {
+		List<String> invoiceDate = new ArrayList<String>();
 		for (WebElement tdElement : colInvoiceDate) {
-			date.add(tdElement.getText());
+			invoiceDate.add(tdElement.getText());
 		}
-		System.out.println(date);
+		return invoiceDate;
 	}
 }

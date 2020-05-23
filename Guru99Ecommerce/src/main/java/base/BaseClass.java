@@ -21,7 +21,7 @@ public class BaseClass {
 		System.setProperty("webdriver.chrome.silentOutput", "true");
 		options.addArguments("start-maximized");
 		driver = new ChromeDriver(options);
-//		driver.get("http://live.demoguru99.com/");
+		driver.get("http://live.demoguru99.com/");
 
 		Reporter.log("====Application Started====", true);
 	}

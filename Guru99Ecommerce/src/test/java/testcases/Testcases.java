@@ -4,6 +4,7 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 import java.awt.AWTException;
+import java.util.List;
 
 import javax.mail.MessagingException;
 
@@ -12,6 +13,7 @@ import org.testng.annotations.Test;
 
 import base.BaseClass;
 import pageFactory.Day10Page;
+import pageFactory.Day11Page;
 import pageFactory.Day13Page;
 import pageFactory.Day1Page;
 import pageFactory.Day2Page;
@@ -24,6 +26,7 @@ import pageFactory.Day8Page;
 import pageFactory.Day9Page;
 import util.EmailUtil;
 import util.ExcelUtil;
+import util.FileUtil;
 
 public class Testcases extends BaseClass {
 
@@ -185,7 +188,7 @@ public class Testcases extends BaseClass {
 		// Save pdf file in Save As dialog
 		day7Page.printOrder();
 		Thread.sleep(2000);
-		Assert.assertTrue(day7Page.isFileDownloaded("C:/Users/hung.nguyen/Downloads/", "Print Order # 100011915.pdf"));
+		Assert.assertTrue(FileUtil.isFileDownloaded("C:/Users/hung.nguyen/Downloads/", "Print Order # 100011915.pdf"));
 	}
 
 	@Test(description = "Day 8", priority = 8, enabled = false)
@@ -249,18 +252,53 @@ public class Testcases extends BaseClass {
 		day10Page.clickMenuOrders();
 		day10Page.exportCSV();
 		Thread.sleep(7000);
-		day10Page.readCSV("C:\\Users\\hung.nguyen\\Downloads", "orders.csv");
+		FileUtil.readCSV("C:\\Users\\hung.nguyen\\Downloads", "orders.csv");
 		EmailUtil.sendMail();
 	}
 	
-	@Test(description = "Day 13", priority = 13)
+	@Test(description = "Day 11", priority = 11)
+	public void day11() throws MessagingException, InterruptedException {
+		Day11Page day11Page = new Day11Page(driver);
+		day11Page.adminLogin("user01", "guru99com");
+		Thread.sleep(2000);
+		day11Page.closePopup();
+		day11Page.clickMenuOrders();
+		Thread.sleep(2000);
+		day11Page.selectCancelledStatus();
+		day11Page.clickSearch();
+		Thread.sleep(2000);
+		day11Page.selectFirstOrder();
+		day11Page.selectPrintInvoices();
+		day11Page.clickSubmit();
+		Thread.sleep(2000);
+		assertEquals(day11Page.getMsgErrPrintInvoice(), "There are no printable documents related to selected orders.");
+		
+		Thread.sleep(2000);
+		day11Page.selectCompleteStatus();
+		Thread.sleep(2000);
+		day11Page.clickSearch();
+		Thread.sleep(2000);
+		day11Page.selectFirstOrder();
+		day11Page.selectPrintInvoices();
+		day11Page.clickSubmit();
+		String expectedPDF = FileUtil.appendDateTimeToPDF();
+		Thread.sleep(10000);
+		Assert.assertTrue(FileUtil.isFileDownloaded("C:\\Users\\Nam-Graphic's\\Downloads", expectedPDF));
+	}
+	
+	@Test(description = "Day 13", priority = 13, enabled = false)
 	public void day13() throws InterruptedException {
-//		Day13Page day13Page = new Day13Page(driver);
-//		day13Page.adminLogin("user01", "guru99com");
-//		day13Page.closePopup();
-//		day13Page.clickMenuInvoice();
-//		Thread.sleep(2000);
-//		day13Page.getInvoiceDate();
-		ExcelUtil.ReadExcel("C:\\Users\\Nam-Graphic's\\Desktop\\TestData.xlsx");
+		Day13Page day13Page = new Day13Page(driver);
+		day13Page.adminLogin("user01", "guru99com");
+		day13Page.closePopup();
+		day13Page.clickMenuInvoice();
+		Thread.sleep(2000);
+		
+		List<String> actualInvoiceDate = day13Page.getInvoiceDate();
+		List<String> expectInvoiceDate = ExcelUtil.ReadExcel("C:\\Users\\Nam-Graphic's\\Desktop\\TestData.xlsx");
+		System.out.println(actualInvoiceDate);
+		System.out.println(expectInvoiceDate);
+		
+		assertTrue(actualInvoiceDate.equals(expectInvoiceDate));
 	}
 }
